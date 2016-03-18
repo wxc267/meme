@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ChatRoom</title> 
+	<style>
+		body{ background-size: 100%; background-image: url("background.jpeg");}
+		.prompt {
+			font: normal 22px "Times New Roman", Georgia;
+			text-shadow: 0 0 10px #fff,
+			             0 0 20px #fff,
+			             0 0 30px #fff,
+			             0 0 40px #ff00de,
+		                 0 0 70px #ff00de,
+   		                 0 0 80px #ff00de,
+			             0 0 100px #ff00de,
+			             0 0 150px #ff00de;
+		}
+
+		.promptCircle {
+			text-shadow: 0 0 10px #fff,
+			             0 0 20px #fff,
+			             0 0 30px #fff,
+			             0 0 40px #ff00de,
+		                 0 0 70px #ff00de,
+   		                 0 0 80px #ff00de,
+			             0 0 100px #ff00de,
+			             0 0 150px #ff00de;
+		}
+
+		.nicknameTextBox {
+			background: white;
+			border: 1px solid #ffa853;
+			border-radius: 5px;
+			box-shadow: 0 0 5px 3px #ff00de;
+			color: #666;
+			width: 150px;
+			height: 20px;
+			outline: none;
+			opacity:0.8;
+			position:relative;
+			top:-5px;
+		}
+
+		.nicknamePropmt{
+			position: absolute;
+			top:-40px;
+			left: 40%;
+			opacity:0.8;
+		    color:black;
+		    text-shadow: 0 0 10px #fff,
+			             0 0 20px #fff,
+			             0 0 30px #fff,
+			             0 0 40px #ff00de,
+		                 0 0 70px #ff00de,
+   		                 0 0 80px #ff00de,
+			             0 0 100px #ff00de,
+			             0 0 150px #ff00de;
+		}
+
+		.textareaDiv{
+			  position: absolute;
+			  left: 5px; 
+			  top: 5px;
+			  right: 120px; 
+			  bottom: 5px;
+			  border: 1px solid #CCC;
+			  opacity:0.8;
+		}
+
+		#bottomPanel{
+		    height: 100px;
+		    background:#EEE;
+		    position:absolute;
+		    bottom:0px;
+		    left:0px;
+		    right:0px;
+		    opacity:0.8;
+		}
+
+		#bottomPanel textarea{
+		    width: 100%;
+			height: 100%;
+			margin: 0;
+			border: 0;
+			opacity:0.8;
+		}
+
+		#bottomPanel button[type=button]{
+		    position:absolute;
+		    top:10px;
+		    bottom:10px;
+		    right:10px;
+		    width:100px;
+		    opacity:0.8;
+		}
+
+		#nickname{
+		    display: none;
+		    background: white;
+		    color: #FFF;
+		    opacity:0.8;
+		    top:110px;
+		    left:0px;
+		    position:absolute;
+		    width: 100%;
+			height:10%;		    
+		}
+
+	    .circle {
+		    width: 100px;
+		    height: 100px;
+		    background: #EEE;
+		    border-radius: 200px;
+		    margin: 0 auto;
+		    opacity:0.8;
+		    position:center;
+		    top:1px;
+		}
+
+		.circleText {
+		    display: block;
+		    color: black;
+		    font: normal 18px "Times New Roman", Georgia;
+		    text-align: center;
+		    line-height: 100px;
+		    opacity:0.8;
+		}
+	</style>
+
+</head>
+<body>
+	<% @user=User.find_by_id(params[:id]) %>
+	<div class="circle">
+		<a href="#" class="circleText" id="toggle"><p class="promptCircle"><%=@user.nickname%></p>
+			<div id="nickname">
+				<h1 class="nicknamePropmt"><input id="userId" class="nicknameTextBox" placeholder="your-name-here" value="<%=@user.nickname%>" type="hidden"  reasonly="readonly"/></h1>
+			</div>
+		</a>
+	</div>
+	<div class="prompt">Chat Output: <div>
+	<div class="prompt">---------------------------------- <div>
+	<div id="bottomPanel">
+        <div class="textareaDiv">
+        	<textarea id="input" placeholder="your-chat-here"></textarea>
+        </div>
+	<table><tr><td>
+        <button class="prompt" type="button" id="send" >Send</button></tr></td>
+	<tr><td>
+	<%= link_to ('return'),
+{:action=>'memeuser',
+:currentuser=>@user.username
+}%>
+	</tr></td>
+    </div>
+	<div id="box"></div>
+</body>
+
+<script src="http://cdn.pubnub.com/pubnub.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
+<script>
+	$(function()
+	  {
+	     $("a#toggle").hover(function()
+	                         {
+	                            $("#nickname").slideToggle();
+	                            return false;
+	                         }); 
+	  });
+
+	var box = document.getElementById('box');
+	var word = document.getElementById('input');
+	var send = document.getElementById('send');
+	var userName = document.getElementById('userId');
+	
+	var PUBNUB_chat = PUBNUB.init({
+		publish_key: 'pub-c-d858c247-b5ee-4747-b740-d525b12ca3c1',
+		subscribe_key: 'sub-c-55938c58-e2e6-11e4-ad9d-02ee2ddab7fe'
+		});
+	PUBNUB_chat.subscribe({
+		channel: 'Shao_ChatRoom',
+		message: function(m) {
+			var d = new Date();
+			var n = m.indexOf("+++");
+			
+			if(m.substring(0, n) === userName.value){
+				box.innerHTML = ' - Message sent by ' + userName.value + ' at ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds() + '<br><br>' + box.innerHTML;
+			}else{
+				box.innerHTML = ' - Message received from ' + m.substring(0, n) + ' at  ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds() + '<br><br>' + box.innerHTML;
+			}
+			box.innerHTML = m.substring(n + 3) +  box.innerHTML;
+		}
+		});
+	document.onkeypress = function(e){
+		if(e.keyCode === 13){
+			if(input.value === ''){
+				alert('Sorry, you need say something and send. ')
+			}else if(userName.value === ''){
+				alert('Can I have you name? \n Just move your cursor to \"Your Name\"');
+			}else{
+				var m = userName.value + '+++' +input.value;
+				PUBNUB_chat.publish({
+					channel: 'Shao_ChatRoom', 
+					message: m,
+					x: (input.value='')
+				})
+			}
+		}
+	};
+	send.addEventListener("click", function(){
+		if(input.value === ''){
+			alert('Sorry, you need say something and send. ')
+		}else if(userName.value === ''){
+				alert('Can I have you name? \n Just move your cursor to \"Your Name\"');
+		}else{
+			var m = userName.value + '+++' + input.value;
+			PUBNUB_chat.publish({
+				channel: 'Shao_ChatRoom',
+				message: m, 
+				x: (input.value='')
+			})
+		}
+	}, false);
+</script> 
+</html>

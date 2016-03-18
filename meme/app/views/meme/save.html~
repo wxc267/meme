@@ -1,0 +1,14 @@
+<head>
+<link rel="stylesheet" type="text/css" href="index.css"/>
+</head>
+<body   class="small login">
+<div id="container">
+    <div id="content" >
+    	<div class="wrapper">
+<p><font size="5">Record saved!</font></p>
+<p><font size="4">Click back to return logain page</font></p>
+<input type="button" value="Back" onClick="window.location.href='index.html';">
+		</div> <!-- wrapper -->
+	</div> <!-- content -->
+</div> <!-- container -->
+</body>

@@ -1,0 +1,69 @@
+<head>
+<link rel="stylesheet" type="text/css" href="index.css"/>
+</head>
+<body  class="small login">
+<div id="header">
+<font size="3">
+<% @updateuser=User.find_by_id(params[:id]) %>
+<p>Username:<%=@updateuser.username%></p>
+<p>ID:<%@uid=@updateuser.id%><%=@uid%></p>
+</font>
+</div>
+<div id="container">
+    <div id="content" >
+    	<div class="wrapper">
+<table  class="login" style="margin-left: auto; margin-right: auto;">
+<form action = "updatecomfirm">
+<script src="registration.js"></script>
+<tr><td><input name="id" type="hidden" value="<%=@uid%>" readonly="readonly"></tr></td>
+<tr>
+		<td><input name="nickname" type="text" placeholder="NickName" value="<%=@updateuser.nickname%>" size="24" maxlength="32" class="inputtext"></td>
+	</tr>
+	<tr>
+<tr>
+		<td><input name="email" type="email" placeholder="Email" value="<%=@updateuser.email%>" size="24" maxlength="32" class="inputtext"></td>
+	</tr>
+	<tr>
+		<td><input name="major" type="text" placeholder="Major" value="<%=@updateuser.major%>" size="24" maxlength="32" class="inputtext"></td>
+	</tr>
+	<tr>
+		<td><input name="nation" type="text" placeholder="Nationality" value="<%=@updateuser.nationality%>" size="24" maxlength="32" class="inputtext"></td>
+
+	<tr>
+		<td>Gender:
+		<select name="gender">
+		<option value="M">Male</option>
+		<option value="F">Female</option>
+		</select>
+		 
+		</td>
+	</tr>
+	<tr>
+		<td>
+		Birthday
+		<select id="selYear" name="year"></select>
+		<select id="selMonth" name="month"></select>
+		<select id="selDay" name="day"></select>
+		<script type="text/javascript">
+			var selYear = window.document.getElementById("selYear");
+			var selMonth = window.document.getElementById("selMonth");
+			var selDay = window.document.getElementById("selDay");
+			new DateSelector(selYear, selMonth ,selDay);
+		</script>
+		</td>
+	</tr>
+	<tr>
+		<td align=center>		
+		<input name="submit" type="submit"  class="public-button" value="submit" />
+		</td>
+	</tr>
+</form>
+</table>
+		</div> <!-- wrapper -->
+	</div> <!-- content -->
+</div> <!-- container -->
+<%= link_to ('back'),
+{:action=>'memeuser',
+:currentuser=>@updateuser.username
+}%>
+</body>

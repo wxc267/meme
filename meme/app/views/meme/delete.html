@@ -1,0 +1,13 @@
+<head>
+<title>MEME Log in</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="index.css"/>
+</head>
+<body>
+<p>The user:<%= @username%> has been deleted</p>
+<%= link_to ('back'),
+{
+:action=>'admin',
+:administrator =>@administrator
+}%>
+</body>

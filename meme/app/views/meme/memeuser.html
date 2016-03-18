@@ -1,0 +1,82 @@
+<% users=User.all %>
+<% users.each do |user| %>
+<% if user.username== @currentuser %>
+<% @id=user.id %>
+<% end %>
+<% end %>
+<head>
+<title>Welcome!</title>
+<link rel="stylesheet" type="text/css" href="index.css"/>
+</head>
+<body  class="small login">
+<table class="login" style="margin-left: auto; margin-right: auto;">
+	<tr><td><div id="header" align="center">Welcome! <%= @currentuser %>!</div></td></tr>
+	<tr>
+	
+	<tr><td>
+	<div id="container">
+    	<div id="content" >
+    	<div class="wrapper">
+	
+	<table class="login"  style="margin-left: auto; margin-right: auto;">
+	<tr>
+	<td>
+	<tr><td>what would you like to do</td></tr>
+	<tr><td><%= link_to ('Update'),
+	{:controller=> 'meme',
+	:action=> 'update', 
+	:id=> @id
+	}%></td></tr>
+	
+	<tr><td><input type="button" value="Log out" 		onClick="window.location.href='index.html';">
+	</td></tr>
+	</td>
+	</table>
+	
+	</div> <!-- wrapper -->
+	</div> <!-- content -->
+	</div> <!-- container -->
+	</td></tr>
+
+
+<tr><td>
+<div id="container">
+    <div id="content" >
+    	<div class="wrapper">
+
+<table class="login" style="margin-left: auto; margin-right: auto;">
+<tr><td><%= link_to ('Chat Room'),
+	{:controller=> 'meme',
+	:action=> 'chatroom', 
+	:id=> @id
+	}%></td></tr>
+<tr><td>People who you may want to know</td></tr>
+<% users=User.all %>
+<% users.each do |user| %>
+<% if user.username!= @currentuser %>
+<tr>
+<td>
+<%= user.username %>
+<% @pid=user.id %>
+</td>
+<td>
+<%= link_to ('Personal Information'),
+{:action=>'personal',
+:currentuser=>@currentuser,
+:id=>@pid
+}%>
+</td>
+</tr>
+<% end %>
+<% end %>
+</table>
+
+</div> <!-- wrapper -->
+</div> <!-- content -->
+</div> <!-- container -->
+</td></tr>
+	
+
+</tr>
+</table>
+</body>

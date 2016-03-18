@@ -1,0 +1,18 @@
+<head>
+<title>MEME Log in</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="index.css"/>
+</head>
+<body class="small login">
+<form  action= "adminlog">
+				<table class="login" style="margin-left: auto; margin-right: auto;">
+<tr>
+						<td><input name="pass" type="password" placeholder="Password" value="" class="inputtext"></td>
+					</tr>
+<tr>
+						<td align=center><input class="public-button" type="submit" value="Log in"></td>
+					</tr>
+</table>
+</form>
+
+</body>

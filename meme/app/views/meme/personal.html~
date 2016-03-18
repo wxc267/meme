@@ -1,0 +1,29 @@
+<title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="index.css"/>
+</title>
+<body class="small login">
+<div id="header" align="center">	
+	<p><%= @username %></p>
+</div>
+<div id="container">
+    <div id="content" >
+    	<div class="wrapper">   		
+<table class="login" style="margin-left: auto; margin-right: auto;">
+<tr><td>nickname: <%=@nickname %></td></tr>
+<tr><td>Gender: <%=@gender%></td></tr>
+<tr><td>email: <%= @email %></td></tr>
+<tr><td>major: <%= @major %></td></tr>
+<tr><td>nationality: <%= @nationality %></td></tr>
+<tr><td>birthday: <%=@birthday%></td></tr>
+</table>
+		</div> <!-- wrapper -->
+	</div> <!-- content -->
+</div> <!-- container -->
+<div align="center">
+<%= link_to ('back'),
+{:action=>'memeuser',
+:currentuser=>@currentuser
+}%>
+</div>
+</body>

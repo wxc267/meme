@@ -1,0 +1,38 @@
+class User < ActiveRecord::Base
+	def username
+		@username
+	end
+	def username=(value)
+		@username=value
+	end
+	def password
+		@password
+	end
+	def password=(value)
+		@password=value
+	end
+	def email
+		@email
+	end
+	def email=(value)
+		@email=value
+	end
+	def gender
+		@gender
+	end
+	def gender=(value)
+		@gender=value
+	end
+	def major
+		@major
+	end
+	def major=(value)
+		@major=value
+	end
+	def nationality
+		@nationality
+	end
+	def nationality=(value)
+		@nationality=value
+	end
+end

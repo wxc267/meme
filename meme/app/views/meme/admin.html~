@@ -1,0 +1,48 @@
+<head>
+<title>MEME Log in</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="index.css"/>
+</head>
+<body>
+<p>Welcome <%= @administrator%></p>
+<table width="400" align="center">
+<tr>
+<td width="100">
+Username
+</td>
+<td width="100">
+ID
+</td>
+<td width="100">
+email
+</td>
+</tr>
+<% users=User.all %>
+<% users.each do |user| %>
+<% if user.username!= @currentuser %>
+<tr>
+<td width="100">
+<%= user.username %>
+</td>
+<td  width="100">
+<%= @pid=user.id %>
+</td>
+<td width="100">
+<%= user.password%>
+</td>
+<td width="100">
+<%= user.email%>
+</td>
+<td>
+<%= link_to ('delete'),
+{:action=>'delete',
+:id=>@pid,
+:administrator =>@administrator
+}%>
+</td>
+</tr>
+<% end %>
+<% end %>
+</table>
+<input type="button" value="Quit" onClick="window.location.href='index.html';"  class="public-button">
+</body>

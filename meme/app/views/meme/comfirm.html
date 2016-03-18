@@ -1,0 +1,50 @@
+<head>
+<link rel="stylesheet" type="text/css" href="index.css"/>
+</head>
+<body  class="small login">
+<div id="header">	
+	<p>Comfirm Page</p>
+</div>
+<div id="container">
+    <div id="content" >
+    	<div class="wrapper">
+<table class="login" style="margin-left: auto; margin-right: auto;"><font size="5">
+<tr><td>username: <%= @username %></tr></td>
+<% @password %>
+<tr><td>nickname: <%=@nickname %></tr></td>
+<tr><td>birth day: <%=@month%>/<%=@day%>/<%=@year%></tr></td>
+<% @birthday=@month+'/'+@day+'/'+@year %>
+<tr><td>gender: <%=@gender%></tr></td>
+<tr><td>email: <%= @email %></tr></td>
+<tr><td>major: <%= @major %></tr></td>
+<tr><td>nationality: <%= @nation %></tr></td>
+<tr><td>
+<% users = User.where(:username => @username).first %>
+<% if users %>
+<font color="red">
+ Sorry, this username has been registered.
+</font>
+<% else %>
+<%=link_to ('Save'), {
+:controller=> 'meme',
+:action=> 'save',
+:username=> @username,
+:nickname=>@nickname,
+:gender=>@gender,
+:birthday=>@birthday,
+:password=> @password,
+:email=> @email,
+:major=> @major,
+:nation => @nation
+ }%>
+<% end %>
+</tr></td>
+<tr><td>
+<input type="button" value="Cancel" onClick="window.location.href='registration.html';">
+</tr></td>
+</font>
+</table>
+		</div> <!-- wrapper -->
+	</div> <!-- content -->
+</div> <!-- container -->
+</body>

@@ -1,0 +1,210 @@
+body {
+padding: 0;
+margin: 0;
+text-align: center;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 13px;
+line-height: 20px;
+}
+
+a {
+text-decoration: none;
+}
+
+#header  { padding: 22px 00px 12px 00px; font-size: 30px; }
+#top     { padding: 30px 00px 00px 00px; }
+#content { padding: 50px 00px 30px 00px; }
+#footer  { padding: 25px 00px 40px 00px; }
+
+
+/* ***************************
+       Layout
+**************************** */
+
+.wrapper {
+text-align: left;
+margin: 0 auto;
+width: 940px;
+}
+
+#content {
+position: relative;
+}
+
+#container, #header {
+margin: 0 auto;
+}
+
+#footer {
+width: 100%;
+}
+#footer .wrapper {
+width: 100%;
+white-space:nowrap;
+}
+
+body {
+background: #fff;
+}
+
+/* ***************************
+       Header & footer
+**************************** */
+
+#header .wrapper {
+position: relative;
+}
+#header { border-bottom: 1px solid #e7e5e0; }
+#top { background: #f6f4ef; border-bottom: 1px solid #e7e5e0; }
+body.home #content { background: #fff; }
+html, body { background: #f6f4ef; background: #f1efea; }
+.footer-home { background: #f6f4ef !important; border-top: 2px solid #e7e5e0; }
+#footer #copyright {
+color: #888;
+font-size: 11px;
+}
+
+/* ***************************
+       Small
+**************************** */
+
+table.login {
+margin: 5px auto;
+}
+table.login th {
+padding: 5px 10px 5px 0;
+vertical-align: top;
+text-align: right;
+}
+
+table.login input.inputtext {
+width: 250px !important;
+color: #515348;
+}
+table.login input.public-button {
+margin: 0;
+}
+table.login select {
+padding: 3px;
+color: #515348;
+}
+table.login tr td.separator {
+padding: 10px 0 10px 0;
+}
+table.login tr td.separator div {
+border-top: 1px dotted #bbb;
+height: 0;
+line-height: 0;
+font-size: 0;
+}
+
+body.login div.error, body.login div.success {
+margin: 0 0 15px 0;
+text-align: center;
+}
+
+/* ***************************
+       General
+**************************** */
+
+input.inputtext {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+border: 1px solid #aaa;
+padding: 7px;
+box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+font-size: 13px;
+border-radius: 3px;
+position: relative;
+behavior: url(/_pie/PIE.htc);
+}
+.signup textarea {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+border: 1px solid #aaa;
+padding: 7px;
+margin-top: 5px;
+box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+font-size: 13px;
+border-radius: 3px;
+}
+
+
+/* ***************************
+       Sign Up
+**************************** */
+
+
+input.public-button {
+font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+font-size: 13px;
+vertical-align: top;
+padding: 6px 14px 6px 14px;
+border: 1px solid #a2a2a2;
+color: #444;
+cursor: pointer;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+background: -webkit-linear-gradient(#fff, #e5e5e5);
+background: -moz-linear-gradient(#fff, #e5e5e5);
+background: -ms-linear-gradient(#fff, #e5e5e5);
+background: -o-linear-gradient(#fff, #e5e5e5);
+background: linear-gradient(#fff, #e5e5e5);
+-pie-background: linear-gradient(#fff, #e5e5e5);
+position: relative;
+}
+input.public-button:hover {
+background: #e5e5e5;
+transition: background 0.05s linear;
+}
+input.public-button:active {
+/*padding: 7px 14px 5px 14px;*/
+padding: 6px 14px 6px 14px;
+background: -webkit-linear-gradient(#e5e5e5, #fff);
+background: -moz-linear-gradient(#e5e5e5, #fff);
+background: -ms-linear-gradient(#e5e5e5, #fff);
+background: -o-linear-gradient(#e5e5e5, #fff);
+background: linear-gradient(#e5e5e5, #fff);
+-pie-background: linear-gradient(#e5e5e5, #fff);
+}
+
+
+
+
+
+
+body.small #content {
+padding: 25px 30px 20px 30px;
+}
+
+body.small #content input.inputtext {
+width: 240px;
+}
+
+body.small #content h2 {
+font-size: 18px;
+}
+body.small #content a {
+color: #36808e;
+border-bottom: 1px solid #d0e8e7;
+}
+body.small #content a:hover {
+background: #deefee;
+text-decoration: none;
+}
+
+
+
+body.login #header { width: 420px; }
+body.login #container { width: 460px; }
+body.login .wrapper { width: 380px; }
+
+#footer { background: #f1efea; }
+div.separator { border-top: 1px solid #e7e5e0; }
+.call { border-top: 1px solid #e7e5e0; }
+div.separator-label span { background: #fff; }
+body.small #container { background: #f7f6f3; border: 1px solid #e7e5e0; }
+
+
+
+
+

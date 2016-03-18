@@ -1,0 +1,27 @@
+<head>
+<link rel="stylesheet" type="text/css" href="index.css"/>
+</head>
+<body>
+<div id="header">	
+	<p>Update Success!</p>
+	<p><%= @username %></p>
+</div>
+<div id="container">
+    <div id="content" >
+    	<div class="wrapper">
+<table class="login" style="margin-left: auto; margin-right: auto;">
+<tr><td>nickname: <%=@nickname %></tr></td>
+<tr><td>email: <%= @email %></tr></td>
+<tr><td>major: <%= @major %></tr></td>
+<tr><td>nationality: <%= @nationality %></tr></td>
+<tr><td>birth day: <%=@month%>/<%=@day%>/<%=@year%></tr></td>
+<tr><td>gender: <%=@gender%></tr></td>
+</table>
+</div> <!-- wrapper -->
+	</div> <!-- content -->
+</div> <!-- container -->
+<%= link_to ('back'),
+{:action=>'memeuser',
+:currentuser=>@username
+}%>
+</body>

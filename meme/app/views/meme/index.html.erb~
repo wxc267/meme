@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>MEME Log in</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="index.css"/>
+</head>
+<body class="small login">
+
+<div id="header">	
+	<p>Welcome to MEME</p>
+</div>
+
+<div id="container">
+    <div id="content" >
+    	<div class="wrapper">
+    		<form  action= "index">
+				<table class="login" style="margin-left: auto; margin-right: auto;">
+					<tr>
+						<td><input name="user" type="text" placeholder="Username" value="" class="inputtext"></td>
+					</tr>
+					<tr>
+						<td><input name="pass" type="password" placeholder="Password" value="" class="inputtext"></td>
+					</tr>
+					
+					<tr>
+						<td align=center><input class="public-button" type="submit" value="Log in"></td>
+					</tr>
+				</table>
+				<table class="login">
+					<tr>
+						<td><th>First time huh?</th></td>
+						<td><a href="registration.html">Sign up</a></td>
+					</tr>
+					<tr><td><a href="adminlog.html">Log as admin</a>
+</tr></td>
+				</table>
+			</form>
+		</div> <!-- wrapper -->
+	</div> <!-- content -->
+</div> <!-- container -->
+
+<div id="footer">
+		<p id="copyright">
+			Copyright &copy; 2015 MLGM. All rights reserved.
+		</p>
+</div>
+</body>
+<html/>

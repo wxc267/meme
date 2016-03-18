@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ChatRoom</title> 
+</head>
+<body>
+<% @user=User.find_by_id(params[:id]) %>
+<%=@user.username%>
+
+<input id='name' type="hidden" value="<%=@user.nickname%>"/> 
+Enter Chat and press enter
+<div><input id=input placeholder=you-chat-here /></div>
+<button type="button" id='send'>SEND</button> 
+<%= link_to ('return'),
+{:action=>'memeuser',
+:currentuser=>@username
+}%>
+<div>Chat Output<div>
+<div id=box></div>
+
+</body>
+<script src="http://cdn.pubnub.com/pubnub.min.js"></script>
+<script>
+	var box = document.getElementById('box');
+	var word = document.getElementById('input');
+	var send = document.getElementById('send');
+	var userName = document.getElementById('name');
+	
+	var PUBNUB_chat = PUBNUB.init({
+		publish_key: 'pub-c-d858c247-b5ee-4747-b740-d525b12ca3c1',
+		subscribe_key: 'sub-c-55938c58-e2e6-11e4-ad9d-02ee2ddab7fe'
+		});
+	PUBNUB_chat.subscribe({
+		channel: 'Shao_ChatRoom',
+		message: function(m) {
+			var d = new Date();
+			var n = m.indexOf("+++");
+			
+			if(m.substring(0, n) === userName.value){
+				box.innerHTML = ' - Message sent by ' + userName.value + ' at ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds() + '<br><br>' + box.innerHTML;
+			}else{
+				box.innerHTML = ' - Message received from ' + m.substring(0, n) + ' at  ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds() + '<br><br>' + box.innerHTML;
+			}
+			box.innerHTML = m.substring(n + 3) +  box.innerHTML;
+		}
+		});
+	document.onkeypress = function(e){
+		if(e.keyCode === 13){
+			var m = userName.value + '+++' +input.value;
+			PUBNUB_chat.publish({
+				channel: 'Shao_ChatRoom', 
+				message: m,
+				x: (input.value='')
+			})
+		}
+	};
+	send.addEventListener("click", function(){
+		var m = userName.value + '+++' + input.value;
+		PUBNUB_chat.publish({
+			channel: 'Shao_ChatRoom',
+			message: m, 
+			x: (input.value='')
+		})
+	}, false);
+</script> 
+</html>
